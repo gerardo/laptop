@@ -1,0 +1,76 @@
+### Homebrew Cask apps
+
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
+}
+
+brew_cask_is_installed() {
+  local name="$(brew_cask_expand_alias "$1")"
+
+  brew cask list -1 | grep -Fqx "$name"
+}
+
+brew_cask_install() {
+  if brew_cask_is_installed "$1"; then
+    fancy_echo "%s is already installed . Skipping ..." "$1"
+  else
+    fancy_echo "Installing %s ..." "$1"
+    brew install "$@"
+  fi
+}
+
+brew_install_or_upgrade 'caskroom/cask/brew-cask'
+
+brew_tap 'caskroom/versions'
+brew_tap 'caskroom/fonts'
+
+# Native apps
+brew_cask_install 'alfred'
+brew_cask_install 'amethyst'
+brew_cask_install 'iterm2'
+brew_cask_install 'macvim'
+brew_cask_install 'sublime-text-3'
+brew_cask_install 'vagrant'
+brew_cask_install 'virtualbox'
+brew_cask_install 'the-unarchiver'
+brew_cask_install 'mou'
+brew_cask_install 'arq'
+brew_cask_install 'sequel-pro'
+
+brew_cask_install 'spotify'
+brew_cask_install 'skype'
+brew_cask_install 'adium'
+brew_cask_install 'dropbox'
+brew_cask_install 'evernote'
+brew_cask_install 'nvalt'
+
+brew_cask_install 'google-chrome'
+brew_cask_install 'google-chrome-canary'
+brew_cask_install 'firefox'
+brew_cask_install 'transmission'
+
+brew_cask_install 'things'
+brew_cask_install 'wunderlist'
+brew_cask_install 'skitch'
+brew_cask_install 'vlc'
+
+# Quicklook plugins
+brew_cask_install 'betterzipql'
+brew_cask_install 'qlcolorcode'
+brew_cask_install 'qlimagesize'
+brew_cask_install 'qlmarkdown'
+brew_cask_install 'qlstephen'
+brew_cask_install 'quicklook-json'
+brew_cask_install 'qlprettypatch'
+brew_cask_install 'quicklook-csv'
+
+# Open-source Fonts
+brew_cask_install 'font-meslo-lg'
+brew_cask_install 'font-meslo-lg-for-powerline'
+brew_cask_install 'font-source-code-pro'
+brew_cask_install 'font-source-code-pro-for-powerline' 
+brew_cask_install 'font-source-sans-pro'
+brew_cask_install 'font-ubuntu'
+
+# Link apps
+brew cask alfred link
