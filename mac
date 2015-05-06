@@ -134,6 +134,7 @@ brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'hub'
 brew_install_or_upgrade 'node'
 brew_install_or_upgrade 'postgres'
+
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 
@@ -183,3 +184,8 @@ esac
 . "mac-components/casks"
 . "mac-components/node"
 . "mac-components/ssh"
+
+if [ -f "$HOME/.laptop.local" ]; then
+  . "$HOME/.laptop.local"
+fi
+

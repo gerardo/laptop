@@ -25,34 +25,17 @@ brew_tap 'caskroom/versions'
 brew_tap 'caskroom/fonts'
 
 # Native apps
-brew_cask_install 'alfred'
-brew_cask_install 'amethyst'
 brew_cask_install 'iterm2'
 brew_cask_install 'macvim'
 brew_cask_install 'sublime-text-3'
-brew_cask_install 'vagrant'
-brew_cask_install 'virtualbox'
-brew_cask_install 'the-unarchiver'
 brew_cask_install 'mou'
-brew_cask_install 'arq'
+brew_cask_install 'amethyst'
+brew_cask_install 'virtualbox'
+brew_cask_install 'vagrant'
 brew_cask_install 'sequel-pro'
-
-brew_cask_install 'spotify'
-brew_cask_install 'skype'
-brew_cask_install 'adium'
-brew_cask_install 'dropbox'
-brew_cask_install 'evernote'
-brew_cask_install 'nvalt'
-
+brew_cask_install 'firefox'
 brew_cask_install 'google-chrome'
 brew_cask_install 'google-chrome-canary'
-brew_cask_install 'firefox'
-brew_cask_install 'transmission'
-
-brew_cask_install 'things'
-brew_cask_install 'wunderlist'
-brew_cask_install 'skitch'
-brew_cask_install 'vlc'
 
 # Quicklook plugins
 brew_cask_install 'betterzipql'
@@ -71,6 +54,3 @@ brew_cask_install 'font-source-code-pro'
 brew_cask_install 'font-source-code-pro-for-powerline' 
 brew_cask_install 'font-source-sans-pro'
 brew_cask_install 'font-ubuntu'
-
-# Link apps
-brew cask alfred link
