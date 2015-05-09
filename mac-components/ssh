@@ -1,3 +1,9 @@
-sudo -v
-ssh-keygen -t rsa -b 4096
+if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
+    fancy_echo "Creating ssh key..."
+    ssh-keygen -t rsa -b 4096
+else
+    fancy_echo "Skipping ssh key creation, since one already exists..."
+fi
+
+fancy_echo "Set you key in Github, if you haven't already..."
 cat ~/.ssh/id_rsa.pub | pbcopy && open https://github.com/settings/ssh
