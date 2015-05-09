@@ -1,5 +1,4 @@
 ### Homebrew Cask apps
-
 brew_cask_expand_alias() {
   brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
@@ -15,7 +14,7 @@ brew_cask_install() {
     fancy_echo "%s is already installed . Skipping ..." "$1"
   else
     fancy_echo "Installing %s ..." "$1"
-    brew install "$@"
+    brew cask install "$@"
   fi
 }
 
@@ -51,6 +50,6 @@ brew_cask_install 'quicklook-csv'
 brew_cask_install 'font-meslo-lg'
 brew_cask_install 'font-meslo-lg-for-powerline'
 brew_cask_install 'font-source-code-pro'
-brew_cask_install 'font-source-code-pro-for-powerline' 
+brew_cask_install 'font-source-code-pro-for-powerline'
 brew_cask_install 'font-source-sans-pro'
 brew_cask_install 'font-ubuntu'
