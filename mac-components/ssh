@@ -1,9 +1,12 @@
 if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
     fancy_echo "Creating ssh key..."
-    ssh-keygen -t rsa -b 4096
+    ssh-keygen -t rsa -b 4096 -o -a 100
 else
     fancy_echo "Skipping ssh key creation, since one already exists..."
 fi
 
+eval "$(ssh-agent -s)"
+ssh-add $HOME/.ssh/id_rsa
+
 fancy_echo "Set you key in Github, if you haven't already..."
-cat ~/.ssh/id_rsa.pub | pbcopy && open https://github.com/settings/ssh
+cat $HOME/.ssh/id_rsa.pub | pbcopy && open https://github.com/settings/ssh
