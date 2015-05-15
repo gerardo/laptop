@@ -182,10 +182,10 @@ esac
 # Install and configure extra components
 . "mac-components/homebrew"
 . "mac-components/casks"
-. "mac-components/node"
+. "mac-components/tools"
+. "mac-components/editors"
 . "mac-components/ssh"
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
 fi
-

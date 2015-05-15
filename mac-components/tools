@@ -1,0 +1,28 @@
+#!/bin/sh
+pip_is_installed() {
+  pip list 2> /dev/null | grep -q "$1"
+}
+
+pip_install_or_update() {
+  if pip_is_installed "$1"; then
+    fancy_echo "[Pip] %s is already installed . Updating ..." "$1"
+    pip install --upgrade "$@"
+  else
+    fancy_echo "[Pip] Installing %s ..." "$1"
+    pip install "$@"
+  fi
+}
+
+fancy_echo "Checking misc tools ..."
+
+# JS tools
+npm install -g yo
+npm install -g bower
+npm install -g grunt-cli
+npm install -g gulp
+
+# Pip tools
+pip_install_or_update 'virtualenvwrapper'
+
+# Brew tools
+brew_install_or_upgrade 'leiningen'
