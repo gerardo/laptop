@@ -13,6 +13,15 @@ pip_install_or_update() {
   fi
 }
 
+append_luarocks() {
+  local text='rocks_servers = { "http://rocks.moonscript.org" }'
+  local luarocks="/usr/local/etc/luarocks52/config-5.2.lua"
+
+  if ! grep -Fqs "$text" "$luarocks"; then
+      printf "\n%s\n" "$text" >> "$luarocks"
+  fi
+}
+
 fancy_echo "Checking misc tools ..."
 
 # JS tools
@@ -26,3 +35,12 @@ pip_install_or_update 'virtualenvwrapper'
 
 # Brew tools
 brew_install_or_upgrade 'leiningen'
+
+# Mjolnir
+append_luarocks
+
+luarocks install mjolnir.hotkey
+luarocks install mjolnir.application
+luarocks install mjolnir.tiling
+luarocks install mjolnir.th.hints
+
