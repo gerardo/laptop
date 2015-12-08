@@ -30,9 +30,6 @@ npm install -g bower
 npm install -g grunt-cli
 npm install -g gulp
 
-# Pip tools
-pip_install_or_update 'virtualenvwrapper'
-
 # Brew tools
 brew_install_or_upgrade 'leiningen'
 
