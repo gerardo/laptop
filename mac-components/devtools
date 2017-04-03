@@ -1,0 +1,112 @@
+#!/bin/sh
+
+pip_is_installed() {
+  pip list 2> /dev/null | grep -q "$1"
+}
+
+pip_install_or_update() {
+  if pip_is_installed "$1"; then
+    fancy_echo "[Pip] %s is already installed . Updating ..." "$1"
+    pip install --upgrade "$@"
+  else
+    fancy_echo "[Pip] Installing %s ..." "$1"
+    pip install "$@"
+  fi
+}
+
+apm_is_installed() {
+  apm list | grep -iFq "$1"
+}
+
+apm_install() {
+  if apm_is_installed "$1"; then
+    fancy_echo "[Atom] %s is already installed . Skipping ..." "$1"
+  else
+    fancy_echo "[Atom] Installing %s ..." "$1"
+    apm install "$@"
+  fi
+}
+
+fancy_echo "Installing Development tools ..."
+
+brew bundle --file=- <<EOF
+
+tap "caskroom/fonts"
+tap "neovim/neovim"
+
+## Languages
+cask "java"
+brew "scala"
+brew "python"
+brew "go"
+
+# Dev tools
+cask "iterm2"
+
+# Editors
+brew "neovim"
+cask "atom"
+
+# Fonts
+cask "font-meslo-lg"
+cask "font-meslo-lg-for-powerline"
+cask "font-source-code-pro"
+cask "font-source-code-pro-for-powerline"
+cask "font-source-sans-pro"
+cask "font-ubuntu"
+
+# Misc tools
+brew "shellcheck"
+
+EOF
+
+fancy_echo "Updating Atom packages ..."
+
+apm update -c false
+
+apm_install "vim-mode-plus"
+apm_install "jumpy"
+apm_install "symbols-tree-view"
+apm_install "block-travel"
+apm_install "highlight-selected"
+apm_install "emmet"
+apm_install "docblockr"
+
+apm_install "file-icons"
+apm_install "project-colorize"
+apm_install "advanced-new-file"
+apm_install "whitespace"
+
+apm_install "color-picker"
+apm_install "todo-show"
+apm_install "markdown-preview"
+apm_install "git-history"
+apm_install "merge-conflicts"
+apm_install "hyperclick"
+apm_install "zen"
+
+apm_install "autocomplete-plus"
+apm_install "autocomplete-paths"
+apm_install "autocomplete-emojis"
+apm_install "autocomplete-python"
+apm_install "autocomplete-html"
+apm_install "autocomplete-css"
+
+apm_install "linter"
+apm_install "linter-flake8"
+apm_install "linter-rubocop"
+apm_install "linter-clojure"
+apm_install "linter-scalac"
+apm_install "linter-shellcheck"
+apm_install "linter-jshint"
+apm_install "linter-csslint"
+apm_install "atom-beautify"
+
+# Atom packages dependencies
+fancy_echo "Updating Atom packages dependencies ..."
+
+pip_install_or_update "flake8"
+pip_install_or_update "pep257"
+pip_install_or_update "jedi"
+
+gem_install_or_update "rubocop"

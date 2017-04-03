@@ -1,0 +1,24 @@
+#!/bin/sh
+
+fancy_echo "Checking command-line packages ..."
+
+brew bundle --file=- <<EOF
+
+# Install GNU sed, overwriting the built-in sed.
+brew "gnu-sed", args: ['with-default-names']
+
+# Install GNU find, locate, updatedb, and xargs, g-prefixed.
+brew "findutils"
+
+brew "moreutils"
+brew "curl"
+brew "httpie"
+brew "jq"
+brew "gpg"
+brew "ssh-copy-id"
+brew "pv"
+brew "trash"
+brew "p7zip"
+brew "fasd"
+
+EOF
