@@ -20,5 +20,7 @@ brew "pv"
 brew "trash"
 brew "p7zip"
 brew "fasd"
+brew "zsh-syntax-highlighting"
+
 
 EOF
