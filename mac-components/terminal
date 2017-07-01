@@ -19,7 +19,7 @@ brew "ssh-copy-id"
 brew "pv"
 brew "trash"
 brew "p7zip"
-brew "fasd"
+brew "fzy"
 brew "zsh-syntax-highlighting"
 
 EOF
