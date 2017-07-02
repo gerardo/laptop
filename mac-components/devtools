@@ -41,9 +41,10 @@ brew "python"
 brew "go"
 
 # Dev tools
-cask "iterm2"
-brew "neovim"
+cask "hyper"
 cask "atom"
+brew "neovim"
+cask "iterm2"
 
 # Shell
 brew "git-extras"
