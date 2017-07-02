@@ -42,10 +42,12 @@ brew "go"
 
 # Dev tools
 cask "iterm2"
-
-# Editors
 brew "neovim"
 cask "atom"
+
+# Shell
+brew "git-extras"
+brew "shellcheck"
 
 # Fonts
 cask "font-meslo-lg"
@@ -55,10 +57,9 @@ cask "font-source-code-pro-for-powerline"
 cask "font-source-sans-pro"
 cask "font-ubuntu"
 
-# Misc tools
-brew "shellcheck"
-
 EOF
+
+pip_install_or_update "git-playback"
 
 fancy_echo "Updating Atom packages ..."
 
@@ -66,9 +67,9 @@ apm update -c false
 
 apm_install "vim-mode-plus"
 apm_install "jumpy"
-apm_install "symbols-tree-view"
 apm_install "block-travel"
 apm_install "highlight-selected"
+apm_install "symbols-tree-view"
 apm_install "docblockr"
 
 apm_install "file-icons"
@@ -88,7 +89,6 @@ apm_install "zen"
 
 apm_install "autocomplete-plus"
 apm_install "autocomplete-paths"
-apm_install "autocomplete-emojis"
 apm_install "autocomplete-python"
 apm_install "autocomplete-html"
 apm_install "autocomplete-css"
@@ -109,5 +109,4 @@ fancy_echo "Updating Atom packages dependencies ..."
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
-
 gem_install_or_update "rubocop"
