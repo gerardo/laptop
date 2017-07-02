@@ -60,6 +60,7 @@ cask "font-ubuntu"
 
 EOF
 
+pip_install_or_update "saws"
 pip_install_or_update "git-playback"
 
 fancy_echo "Updating Atom packages ..."
