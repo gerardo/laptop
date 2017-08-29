@@ -38,13 +38,19 @@ tap "neovim/neovim"
 cask "java"
 brew "scala"
 brew "python"
+brew "python3"
 brew "go"
 
 # Dev tools
+brew "neovim"
 cask "hyper"
 cask "atom"
-brew "neovim"
 cask "iterm2"
+cask "docker"
+
+# Data Science tools
+brew "apache-spark"
+cask "anaconda"
 
 # Shell
 brew "git-extras"
@@ -60,6 +66,7 @@ cask "font-ubuntu"
 
 EOF
 
+pip_install_or_update "awscli"
 pip_install_or_update "saws"
 pip_install_or_update "git-playback"
 
@@ -108,6 +115,7 @@ apm_install "atom-beautify"
 # Atom packages dependencies
 fancy_echo "Updating Atom packages dependencies ..."
 
+pip_install_or_update "virtualenvwrapper"
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
