@@ -67,7 +67,7 @@ update_shell() {
     fancy_echo "Adding '$shell_path' to /etc/shells"
     sudo sh -c "echo $shell_path >> /etc/shells"
   fi
-  chsh -s "$shell_path"
+  sudo chsh -s "$shell_path" "$USER"
 }
 
 case "$SHELL" in
@@ -86,7 +86,6 @@ gem_install_or_update() {
     gem update "$@"
   else
     gem install "$@"
-    rbenv rehash
   fi
 }
 
@@ -109,13 +108,15 @@ if brew list | grep -Fq brew-cask; then
 fi
 
 fancy_echo "Updating Homebrew formulae ..."
-brew update
+brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
+tap "universal-ctags/universal-ctags"
+tap "caskroom/cask"
 
 # Unix
-brew "ctags"
+brew "universal-ctags", args: ["HEAD"]
 brew "git"
 brew "openssl"
 brew "the_silver_searcher"
@@ -124,7 +125,7 @@ brew "watchman"
 brew "zsh"
 
 # Heroku
-brew "heroku-toolbelt"
+brew "heroku"
 
 # GitHub
 brew "hub"
@@ -132,21 +133,13 @@ brew "hub"
 # Image manipulation
 brew "imagemagick"
 
-# Testing
-brew "qt@5.5"
-
-# Programming languages and package managers
+# Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
-brew "node"
-brew "rbenv"
-brew "ruby-build"
+brew "coreutils"
 brew "yarn"
+cask "gpg-suite"
 
 EOF
-
-fancy_echo "Symlink qmake binary to /usr/local/bin for Capybara Webkit..."
-brew unlink qt@5.5
-brew link --force qt@5.5
 
 fancy_echo "Configuring Ruby ..."
 find_latest_ruby() {
@@ -165,7 +158,7 @@ fi
 rbenv global "$ruby_version"
 rbenv shell "$ruby_version"
 gem update --system
-gem_install_or_update 'bundler'
+gem_install_or_update "bundler"
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 
@@ -173,7 +166,7 @@ bundle config --global jobs $((number_of_cores - 1))
 . "mac-components/terminal"
 . "mac-components/desktop"
 . "mac-components/devtools"
-#. "mac-components/ssh"
+. "mac-components/ssh"
 
 if [ -f "$HOME/.laptop.local" ]; then
   fancy_echo "Running your customizations from ~/.laptop.local ..."
