@@ -45,15 +45,17 @@ brew "go"
 brew "neovim"
 cask "hyper"
 cask "atom"
-cask "iterm2"
 cask "docker"
 
 # Data Science tools
-brew "apache-spark"
+brew "ipython"
 cask "anaconda"
+brew "apache-spark"
+brew "pgcli"
 
 # Shell
 brew "git-extras"
+brew "tig"
 brew "shellcheck"
 
 # Fonts
