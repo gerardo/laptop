@@ -22,5 +22,6 @@ brew "p7zip"
 brew "fzy"
 brew "diff-so-fancy"
 brew "zsh-syntax-highlighting"
+brew "youtube-dl"
 
 EOF
