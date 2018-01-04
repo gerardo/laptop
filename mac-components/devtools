@@ -1,16 +1,16 @@
 #!/bin/sh
 
 pip_is_installed() {
-  pip list 2> /dev/null | grep -q "$1"
+  pip3 list 2> /dev/null | grep -q "$1"
 }
 
 pip_install_or_update() {
   if pip_is_installed "$1"; then
     fancy_echo "[Pip] %s is already installed . Updating ..." "$1"
-    pip install --upgrade "$@"
+    pip3 install --upgrade "$@"
   else
     fancy_echo "[Pip] Installing %s ..." "$1"
-    pip install "$@"
+    pip3 install "$@"
   fi
 }
 
@@ -61,7 +61,7 @@ brew "shellcheck"
 
 # Fonts
 cask "font-meslo-lg"
-cask "font-meslo-lg-for-powerline"
+cask "font-meslo-for-powerline"
 cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
 cask "font-source-sans-pro"
