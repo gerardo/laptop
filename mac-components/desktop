@@ -10,7 +10,7 @@ tap "caskroom/versions"
 cask "karabiner-elements"
 
 # Quicklook plugins
-cask "betterzipql"
+cask "betterzip"
 cask "qlcolorcode"
 cask "qlimagesize"
 cask "qlmarkdown"
