@@ -49,6 +49,7 @@ cask "docker"
 
 # Data Science tools
 brew "ipython"
+brew "pipenv"
 cask "anaconda"
 cask "trifacta-wrangler"
 brew "apache-spark"
@@ -113,7 +114,6 @@ apm_install "atom-beautify"
 # Atom packages dependencies
 fancy_echo "Updating Atom packages dependencies ..."
 
-pip_install_or_update "virtualenvwrapper"
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
