@@ -95,7 +95,7 @@ apm_install "color-picker"
 apm_install "todo-show"
 apm_install "git-history"
 apm_install "merge-conflicts"
-apm_install "hyperclick"
+apm_install "atom-ide-ui"
 apm_install "zen"
 
 apm_install "autocomplete-paths"
