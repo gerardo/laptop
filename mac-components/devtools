@@ -14,16 +14,16 @@ pip_install_or_update() {
   fi
 }
 
-apm_is_installed() {
-  apm list | grep -iFq "$1"
+vscode_is_installed() {
+  code --list-extensions | grep -iFq "$1"
 }
 
-apm_install() {
-  if apm_is_installed "$1"; then
-    fancy_echo "[Atom] %s is already installed . Skipping ..." "$1"
+vscode_install() {
+  if vscode_is_installed "$1"; then
+    fancy_echo "[VSCode] %s is already installed . Skipping ..." "$1"
   else
-    fancy_echo "[Atom] Installing %s ..." "$1"
-    apm install "$@"
+    fancy_echo "[VSCode] Installing %s ..." "$1"
+    code --install-extension "$@"
   fi
 }
 
@@ -44,8 +44,9 @@ brew "go"
 # Dev tools
 brew "neovim"
 cask "hyper"
-cask "atom"
+cask "visual-studio-code"
 cask "docker"
+brew "docker-compose"
 
 # Data Science tools
 brew "ipython"
@@ -67,6 +68,7 @@ cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
 cask "font-source-sans-pro"
 cask "font-ubuntu"
+cask "font-fira-code"
 
 EOF
 
@@ -74,45 +76,36 @@ pip_install_or_update "awscli"
 pip_install_or_update "saws"
 pip_install_or_update "git-playback"
 
-fancy_echo "Updating Atom packages ..."
+fancy_echo "Updating VSCode packages ..."
 
-apm update -c false
+vscode_install "auiworks.amvim"
+vscode_install "deerawan.vscode-dash"
+vscode_install "christian-kohler.path-intellisense"
+vscode_install "kevinkyang.auto-comment-blocks"
+vscode_install "njpwerner.autodocstring"
+vscode_install "wayou.vscode-todo-highlight"
 
-apm_install "vim-mode-plus"
-apm_install "jumpy"
-apm_install "block-travel"
-apm_install "highlight-selected"
-apm_install "symbols-tree-view"
-apm_install "docblockr"
+vscode_install "eamodio.gitlens"
+vscode_install "formulahendry.code-runner"
+vscode_install "GrapeCity.gc-excelviewer"
+vscode_install "GitHub.vscode-pull-request-github"
+vscode_install "streetsidesoftware.code-spell-checker"
+vscode_install "pnp.polacode"
 
-apm_install "file-icons"
-apm_install "project-colorize"
-apm_install "advanced-new-file"
-apm_install "nord-atom-ui"
-apm_install "nord-atom-syntax"
+vscode_install "donjayamanne.python-extension-pack"
+vscode_install "redhat.vscode-yaml"
+vscode_install "PeterJausovec.vscode-docker"
+vscode_install "henriiik.docker-linter"
+vscode_install "timonwong.shellcheck"
 
-apm_install "color-picker"
-apm_install "todo-show"
-apm_install "git-history"
-apm_install "merge-conflicts"
-apm_install "atom-ide-ui"
-apm_install "zen"
-
-apm_install "autocomplete-paths"
-apm_install "autocomplete-python"
-
-apm_install "linter"
-apm_install "linter-flake8"
-apm_install "linter-rubocop"
-apm_install "linter-clojure"
-apm_install "linter-scalac"
-apm_install "linter-shellcheck"
-apm_install "linter-jshint"
-apm_install "linter-csslint"
-apm_install "atom-beautify"
+# Themes and icons
+vscode_install "monokai.theme-monokai-pro-vscode"
+vscode_install "PKief.material-icon-theme"
+vscode_install "Equinusocio.vsc-material-theme"
+vscode_install "zhuangtongfa.Material-theme"
 
 # Atom packages dependencies
-fancy_echo "Updating Atom packages dependencies ..."
+fancy_echo "Updating VSCode packages dependencies ..."
 
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"

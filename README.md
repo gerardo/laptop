@@ -12,7 +12,7 @@ Requirements
 
 Supported systems:
 
-* macOS Sierra (10.12)
+* macOS High Sierra (10.13)
 
 Older versions may work but aren't regularly tested.
 Bug reports for older versions are welcome.
@@ -56,20 +56,16 @@ Unix tools:
 * [Exuberant Ctags] for indexing files for vim tab completion
 * [Git] for version control
 * [The Silver Searcher] for finding things in files
-* [Tmux] for saving project state and switching between projects
-* [Watchman] for watching for filesystem events
 * [Zsh] as your shell
 
 [Exuberant Ctags]: http://ctags.sourceforge.net/
 [Git]: https://git-scm.com/
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
-[Tmux]: http://tmux.github.io/
-[Watchman]: https://facebook.github.io/watchman/
 [Zsh]: http://www.zsh.org/
 
 Heroku tools:
 
-* [Heroku CLI] and [Parity] for interacting with the Heroku API
+* [Heroku CLI] for interacting with the Heroku API
 
 [Heroku Toolbelt]: https://toolbelt.heroku.com/
 
@@ -83,28 +79,15 @@ Image tools:
 
 * [ImageMagick] for cropping and resizing images
 
-Testing tools:
-
-* [Qt 5] for headless JavaScript testing via [Capybara Webkit]
-
-[Qt 5]: http://qt-project.org/
-[Capybara Webkit]: https://github.com/thoughtbot/capybara-webkit
-
 Programming languages, package managers, and configuration:
 
-* [ASDF] for managing programming language versions
+* [Python] and [Ruby] stable for writing general-purpose code
 * [Bundler] for managing Ruby libraries
-* [Node.js] and [NPM], for running apps and installing JavaScript packages
-* [Ruby] stable for writing general-purpose code
-* [Yarn] for managing JavaScript packages
 
+[Python]: https://www.python.org/
 [Bundler]: http://bundler.io/
 [ImageMagick]: http://www.imagemagick.org/
-[Node.js]: http://nodejs.org/
-[NPM]: https://www.npmjs.org/
-[ASDF]: https://github.com/asdf-vm/asdf
 [Ruby]: https://www.ruby-lang.org/en/
-[Yarn]: https://yarnpkg.com/en/
 
 And some more! Check the [mac-components/](mac-components) directory.
 
@@ -146,12 +129,6 @@ fi
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
 brew cask cleanup
-
-if [ -r "$HOME/.rcrc" ]; then
-  fancy_echo "Updating dotfiles ..."
-  rcup
-fi
-```
 
 Write your customizations such that they can be run safely more than once.
 See the `mac` script for examples.

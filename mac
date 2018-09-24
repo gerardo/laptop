@@ -110,7 +110,6 @@ fi
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
-tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
 tap "caskroom/cask"
@@ -121,7 +120,6 @@ brew "git"
 brew "openssl"
 brew "the_silver_searcher"
 brew "vim"
-brew "watchman"
 brew "zsh"
 
 # Heroku
@@ -136,7 +134,6 @@ brew "imagemagick"
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
-brew "yarn"
 cask "gpg-suite"
 
 EOF
