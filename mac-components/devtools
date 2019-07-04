@@ -52,8 +52,6 @@ brew "docker-compose"
 brew "ipython"
 brew "pipenv"
 cask "anaconda"
-cask "trifacta-wrangler"
-brew "apache-spark"
 brew "pgcli"
 
 # Shell
@@ -78,7 +76,7 @@ pip_install_or_update "git-playback"
 
 fancy_echo "Updating VSCode packages ..."
 
-vscode_install "auiworks.amvim"
+vscode_install "vscodevim.vim"
 vscode_install "deerawan.vscode-dash"
 vscode_install "christian-kohler.path-intellisense"
 vscode_install "kevinkyang.auto-comment-blocks"
@@ -92,11 +90,16 @@ vscode_install "GitHub.vscode-pull-request-github"
 vscode_install "streetsidesoftware.code-spell-checker"
 vscode_install "pnp.polacode"
 
-vscode_install "donjayamanne.python-extension-pack"
+vscode_install "ms-python.python"
+vscode_install "magicstack.MagicPython"
+vscode_install "wholroyd.jinja"
+vscode_install "VisualStudioExptTeam.vscodeintellicode"
 vscode_install "redhat.vscode-yaml"
 vscode_install "PeterJausovec.vscode-docker"
 vscode_install "henriiik.docker-linter"
 vscode_install "timonwong.shellcheck"
+vscode_install "rebornix.Ruby"
+vscode_install "esbenp.prettier-vscode"
 
 # Themes and icons
 vscode_install "monokai.theme-monokai-pro-vscode"
