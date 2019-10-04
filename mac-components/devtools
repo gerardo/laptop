@@ -47,6 +47,7 @@ cask "hyper"
 cask "visual-studio-code"
 cask "docker"
 brew "docker-compose"
+brew "kubectl"
 
 # Data Science tools
 brew "ipython"

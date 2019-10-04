@@ -12,7 +12,7 @@ Requirements
 
 Supported systems:
 
-* macOS High Sierra (10.13)
+* macOS Mojave (10.14)
 
 Older versions may work but aren't regularly tested.
 Bug reports for older versions are welcome.
@@ -63,12 +63,6 @@ Unix tools:
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Zsh]: http://www.zsh.org/
 
-Heroku tools:
-
-* [Heroku CLI] for interacting with the Heroku API
-
-[Heroku Toolbelt]: https://toolbelt.heroku.com/
-
 GitHub tools:
 
 * [Hub] for interacting with the GitHub API
@@ -110,25 +104,10 @@ brew "ngrok"
 brew "watch"
 EOF
 
-default_docker_machine() {
-  docker-machine ls | grep -Fq "default"
-}
-
-if ! default_docker_machine; then
-  docker-machine create --driver virtualbox default
-fi
-
-default_docker_machine_running() {
-  default_docker_machine | grep -Fq "Running"
-}
-
-if ! default_docker_machine_running; then
-  docker-machine start default
-fi
-
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
 brew cask cleanup
+```
 
 Write your customizations such that they can be run safely more than once.
 See the `mac` script for examples.
