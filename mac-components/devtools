@@ -43,7 +43,6 @@ brew "go"
 
 # Dev tools
 brew "neovim"
-cask "hyper"
 cask "visual-studio-code"
 cask "docker"
 brew "docker-compose"
@@ -72,13 +71,11 @@ cask "font-fira-code"
 EOF
 
 pip_install_or_update "awscli"
-pip_install_or_update "saws"
 pip_install_or_update "git-playback"
 
 fancy_echo "Updating VSCode packages ..."
 
 vscode_install "vscodevim.vim"
-vscode_install "deerawan.vscode-dash"
 vscode_install "christian-kohler.path-intellisense"
 vscode_install "kevinkyang.auto-comment-blocks"
 vscode_install "njpwerner.autodocstring"
@@ -114,4 +111,5 @@ fancy_echo "Updating VSCode packages dependencies ..."
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
+gem_install_or_update "black"
 gem_install_or_update "rubocop"
