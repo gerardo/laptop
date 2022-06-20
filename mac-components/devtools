@@ -31,16 +31,17 @@ fancy_echo "Installing Development tools ..."
 
 brew bundle --file=- <<EOF
 
-tap "caskroom/fonts"
+tap "homebrew/cask-fonts"
 tap "neovim/neovim"
 
 ## Languages
-cask "java"
+brew "java"
 brew "python"
 brew "python3"
 brew "go"
 
 # Dev tools
+cask "iterm2"
 brew "neovim"
 cask "visual-studio-code"
 cask "docker"
@@ -51,26 +52,28 @@ brew "kubectl"
 brew "ipython"
 brew "pipenv"
 cask "anaconda"
-brew "pgcli"
 
 # Shell
 brew "git-extras"
 brew "tig"
 brew "shellcheck"
+brew "diff-so-fancy"
+brew "git-delta"
 
 # Fonts
 cask "font-meslo-lg"
+cask "font-meslo-lg-nerd-font"
 cask "font-meslo-for-powerline"
 cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
 cask "font-source-sans-pro"
 cask "font-ubuntu"
 cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-fira-mono"
+cask "font-fira-mono-nerd-font"
 
 EOF
-
-pip_install_or_update "awscli"
-pip_install_or_update "git-playback"
 
 fancy_echo "Updating VSCode packages ..."
 
@@ -92,10 +95,8 @@ vscode_install "magicstack.MagicPython"
 vscode_install "wholroyd.jinja"
 vscode_install "VisualStudioExptTeam.vscodeintellicode"
 vscode_install "redhat.vscode-yaml"
-vscode_install "PeterJausovec.vscode-docker"
 vscode_install "henriiik.docker-linter"
 vscode_install "timonwong.shellcheck"
-vscode_install "rebornix.Ruby"
 vscode_install "esbenp.prettier-vscode"
 
 # Themes and icons
@@ -110,5 +111,10 @@ fancy_echo "Updating VSCode packages dependencies ..."
 pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
-gem_install_or_update "black"
-gem_install_or_update "rubocop"
+pip_install_or_update "black"
+
+fancy_echo "Installing CLI utilities..."
+
+pip_install_or_update "awscli"
+pip_install_or_update "git-playback"
+pip_install_or_update "tldr"

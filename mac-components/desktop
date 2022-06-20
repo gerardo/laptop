@@ -4,6 +4,6 @@
 fancy_echo "Checking Desktop apps ..."
 
 brew bundle --file=- <<EOF
-tap "caskroom/versions"
+tap "homebrew/cask-versions"
 
 EOF

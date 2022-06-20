@@ -4,25 +4,28 @@ fancy_echo "Checking command-line packages ..."
 
 brew bundle --file=- <<EOF
 
-# Install GNU sed, overwriting the built-in sed.
-brew "gnu-sed", args: ['with-default-names']
-
 # Install GNU find, locate, updatedb, and xargs, g-prefixed.
 brew "findutils"
+brew "gnu-sed"
 
-brew "moreutils"
+brew "coreutils"
 brew "curl"
 brew "httpie"
 brew "jq"
+brew "fd"
+brew "lsd"
 brew "bat"
+brew "dust"
+brew "zoxide"
+brew "fzy"
+
 brew "gpg"
 brew "ssh-copy-id"
 brew "mitmproxy"
 brew "pv"
 brew "trash"
 brew "p7zip"
-brew "fzy"
-brew "diff-so-fancy"
+brew "glances"
 brew "zsh-syntax-highlighting"
 brew "youtube-dl"
 
