@@ -46,7 +46,6 @@ brew "neovim"
 cask "visual-studio-code"
 cask "docker"
 brew "docker-compose"
-brew "kubectl"
 
 # Data Science tools
 brew "ipython"
@@ -74,6 +73,12 @@ cask "font-fira-mono"
 cask "font-fira-mono-nerd-font"
 
 EOF
+
+fancy_echo "Installing CLI utilities..."
+
+pip_install_or_update "awscli"
+pip_install_or_update "git-playback"
+pip_install_or_update "tldr"
 
 fancy_echo "Updating VSCode packages ..."
 
@@ -112,9 +117,3 @@ pip_install_or_update "flake8"
 pip_install_or_update "pep257"
 pip_install_or_update "jedi"
 pip_install_or_update "black"
-
-fancy_echo "Installing CLI utilities..."
-
-pip_install_or_update "awscli"
-pip_install_or_update "git-playback"
-pip_install_or_update "tldr"
