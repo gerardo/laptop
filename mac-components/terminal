@@ -17,7 +17,7 @@ brew "lsd"
 brew "bat"
 brew "dust"
 brew "zoxide"
-brew "fzy"
+brew "fzf"
 
 brew "gpg"
 brew "ssh-copy-id"
