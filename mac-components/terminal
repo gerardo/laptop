@@ -27,6 +27,5 @@ brew "trash"
 brew "p7zip"
 brew "glances"
 brew "zsh-syntax-highlighting"
-brew "youtube-dl"
 
 EOF

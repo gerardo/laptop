@@ -12,7 +12,9 @@ Requirements
 
 Supported systems:
 
-* macOS Mojave (10.14)
+* macOS Sonoma (14.x) on Apple Silicon and Intel
+* macOS Ventura (13.x) on Apple Silicon and Intel
+* macOS Monterey (12.x) on Apple Silicon and Intel
 
 Older versions may work but aren't regularly tested.
 Bug reports for older versions are welcome.
@@ -31,6 +33,12 @@ Execute the downloaded script:
 
 ```sh
 sh mac 2>&1 | tee ~/laptop.log
+```
+
+Optionally, review the log:
+
+```sh
+less ~/laptop.log
 ```
 
 Optionally, [install gerardo/dotfiles][dotfiles].
@@ -53,21 +61,19 @@ macOS tools:
 
 Unix tools:
 
-* [Exuberant Ctags] for indexing files for vim tab completion
 * [Git] for version control
 * [The Silver Searcher] for finding things in files
 * [Zsh] as your shell
 
-[Exuberant Ctags]: http://ctags.sourceforge.net/
 [Git]: https://git-scm.com/
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Zsh]: http://www.zsh.org/
 
 GitHub tools:
 
-* [Hub] for interacting with the GitHub API
+* [GitHub CLI] for interacting with the GitHub API
 
-[Hub]: http://hub.github.com/
+[GitHub CLI]: https://cli.github.com/
 
 Image tools:
 
@@ -77,6 +83,7 @@ Programming languages, package managers, and configuration:
 
 * [Python] and [Ruby] stable for writing general-purpose code
 * [Bundler] for managing Ruby libraries
+* [Rosetta 2] for running tools that are not supported in Apple silicon processors
 
 [Python]: https://www.python.org/
 [Bundler]: http://bundler.io/
@@ -103,6 +110,22 @@ brew "go"
 brew "ngrok"
 brew "watch"
 EOF
+
+default_docker_machine() {
+  docker-machine ls | grep -Fq "default"
+}
+
+if ! default_docker_machine; then
+  docker-machine create --driver virtualbox default
+fi
+
+default_docker_machine_running() {
+  default_docker_machine | grep -Fq "Running"
+}
+
+if ! default_docker_machine_running; then
+  docker-machine start default
+fi
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
