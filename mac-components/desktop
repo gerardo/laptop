@@ -1,9 +1,76 @@
 #!/bin/sh
 
+mas_install() {
+  fancy_echo "[App Store] Installing %s ..." "$1"
+  mas install "$2"
+}
+
 # Desktop apps and plugins
 fancy_echo "Checking Desktop apps ..."
 
 brew bundle --file=- <<EOF
 tap "homebrew/cask-versions"
 
+### For installing App Store Apps
+brew "mas"
+
+### Personal Cask apps
+
+## Productivity
+cask "1password"
+cask "1password-cli"
+cask "brave-browser"
+cask "firefox"
+cask "freedom"
+tap "koekeishiya/formulae"
+brew "koekeishiya/formulae/yabai"
+brew "koekeishiya/formulae/skhd"
+
+## Utilities
+cask "cleanmymac"
+cask "appcleaner"
+cask "daisydisk"
+cask "gemini"
+cask "beyond-compare"
+cask "bartender"
+cask "monitorcontrol"
+cask "tunnelblick"
+
+## PKM
+cask "obsidian"
+cask "devonthink"
+cask "devonagent"
+cask "synology-drive"
+cask "anki"
+
+## Photography
+cask "digikam"
+
+## Comms
+cask "slack"
+cask "discord"
+cask "whatsapp"
+cask "zoom"
+cask "logitune"
+cask "logi-options-plus"
+
+## Misc
+cask "electrum"
+cask "vlc"
+
 EOF
+
+# App Store apps
+
+## Apps
+mas_install "Pixelmator Pro" "1289583905"
+mas_install "Photomator" "1444636541"
+mas_install "Kindle" "302584613"
+
+## Utilities
+mas_install "Be Focused Pro: Pomodoro Timer" "961632517"
+mas_install "Amphetamine" "937984704"
+mas_install "Black Magic Disk Speed Test" "425264550"
+mas_install "Play: Save Videos Watch Later" "1596506190"
+
+# Alfred again?

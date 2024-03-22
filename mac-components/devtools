@@ -1,19 +1,5 @@
 #!/bin/sh
 
-pip_is_installed() {
-  pip3 list 2> /dev/null | grep -q "$1"
-}
-
-pip_install_or_update() {
-  if pip_is_installed "$1"; then
-    fancy_echo "[Pip] %s is already installed . Updating ..." "$1"
-    pip3 install --upgrade "$@"
-  else
-    fancy_echo "[Pip] Installing %s ..." "$1"
-    pip3 install "$@"
-  fi
-}
-
 vscode_is_installed() {
   code --list-extensions | grep -iFq "$1"
 }
@@ -32,7 +18,6 @@ fancy_echo "Installing Development tools ..."
 brew bundle --file=- <<EOF
 
 tap "homebrew/cask-fonts"
-tap "neovim/neovim"
 
 ## Languages
 brew "java"
@@ -41,10 +26,13 @@ brew "go"
 
 # Dev tools
 cask "iterm2"
-brew "neovim"
 cask "visual-studio-code"
+brew "neovim"
 cask "docker"
 brew "docker-compose"
+brew "flake8"
+brew "black"
+cask "mitmproxy"
 
 # Data Science tools
 brew "ipython"
@@ -57,62 +45,42 @@ brew "tig"
 brew "shellcheck"
 brew "diff-so-fancy"
 brew "git-delta"
+brew "tldr"
+brew "awscli"
 
 # Fonts
-cask "font-meslo-lg"
-cask "font-meslo-lg-nerd-font"
-cask "font-meslo-for-powerline"
-cask "font-source-code-pro"
-cask "font-source-code-pro-for-powerline"
-cask "font-source-sans-pro"
-cask "font-ubuntu"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-fira-mono"
 cask "font-fira-mono-nerd-font"
+cask "font-meslo-lg"
+cask "font-meslo-lg-nerd-font"
+cask "font-source-code-pro"
+cask "font-ubuntu"
 
 EOF
 
-fancy_echo "Installing CLI utilities..."
-
-pip_install_or_update "awscli"
-pip_install_or_update "git-playback"
-pip_install_or_update "tldr"
-
 fancy_echo "Updating VSCode packages ..."
 
-vscode_install "vscodevim.vim"
-vscode_install "christian-kohler.path-intellisense"
-vscode_install "kevinkyang.auto-comment-blocks"
-vscode_install "njpwerner.autodocstring"
-vscode_install "wayou.vscode-todo-highlight"
-
-vscode_install "eamodio.gitlens"
-vscode_install "formulahendry.code-runner"
+vscode_install "Gruntfuggly.todo-tree"
+vscode_install "ms-python.isort"
+vscode_install "ms-vscode-remote.remote-containers" 
+vscode_install "ms-azuretools.vscode-docker"
 vscode_install "GrapeCity.gc-excelviewer"
 vscode_install "GitHub.vscode-pull-request-github"
-vscode_install "streetsidesoftware.code-spell-checker"
-vscode_install "pnp.polacode"
-
-vscode_install "ms-python.python"
-vscode_install "magicstack.MagicPython"
-vscode_install "wholroyd.jinja"
+vscode_install "eamodio.gitlens"
 vscode_install "VisualStudioExptTeam.vscodeintellicode"
-vscode_install "redhat.vscode-yaml"
-vscode_install "henriiik.docker-linter"
-vscode_install "timonwong.shellcheck"
+vscode_install "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode_install "DavidAnson.vscode-markdownlint"
+vscode_install "christian-kohler.path-intellisense"
 vscode_install "esbenp.prettier-vscode"
+vscode_install "ms-python.python"
+vscode_install "timonwong.shellcheck"
+vscode_install "vscodevim.vim"
+vscode_install "redhat.vscode-yaml"
 
 # Themes and icons
-vscode_install "monokai.theme-monokai-pro-vscode"
-vscode_install "PKief.material-icon-theme"
 vscode_install "Equinusocio.vsc-material-theme"
-vscode_install "zhuangtongfa.Material-theme"
+vscode_install "Equinusocio.vsc-material-theme-icons"
+vscode_install "monokai.theme-monokai-pro-vscode"
 
-# Atom packages dependencies
-fancy_echo "Updating VSCode packages dependencies ..."
-
-pip_install_or_update "flake8"
-pip_install_or_update "pep257"
-pip_install_or_update "jedi"
-pip_install_or_update "black"

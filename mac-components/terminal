@@ -21,7 +21,6 @@ brew "fzf"
 
 brew "gpg"
 brew "ssh-copy-id"
-brew "mitmproxy"
 brew "pv"
 brew "trash"
 brew "p7zip"
