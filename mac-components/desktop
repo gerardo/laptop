@@ -21,6 +21,7 @@ cask "1password"
 cask "1password-cli"
 cask "brave-browser"
 cask "firefox"
+cask "alfred"
 cask "freedom"
 tap "koekeishiya/formulae"
 brew "koekeishiya/formulae/yabai"
@@ -72,5 +73,3 @@ mas_install "Be Focused Pro: Pomodoro Timer" "961632517"
 mas_install "Amphetamine" "937984704"
 mas_install "Black Magic Disk Speed Test" "425264550"
 mas_install "Play: Save Videos Watch Later" "1596506190"
-
-# Alfred again?

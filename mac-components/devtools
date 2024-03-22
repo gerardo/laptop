@@ -23,6 +23,7 @@ tap "homebrew/cask-fonts"
 brew "java"
 brew "python3"
 brew "go"
+brew "php"
 
 # Dev tools
 cask "iterm2"
@@ -33,6 +34,7 @@ brew "docker-compose"
 brew "flake8"
 brew "black"
 cask "mitmproxy"
+brew "pillow"
 
 # Data Science tools
 brew "ipython"
@@ -64,7 +66,7 @@ fancy_echo "Updating VSCode packages ..."
 
 vscode_install "Gruntfuggly.todo-tree"
 vscode_install "ms-python.isort"
-vscode_install "ms-vscode-remote.remote-containers" 
+vscode_install "ms-vscode-remote.remote-containers"
 vscode_install "ms-azuretools.vscode-docker"
 vscode_install "GrapeCity.gc-excelviewer"
 vscode_install "GitHub.vscode-pull-request-github"
@@ -83,4 +85,3 @@ vscode_install "redhat.vscode-yaml"
 vscode_install "Equinusocio.vsc-material-theme"
 vscode_install "Equinusocio.vsc-material-theme-icons"
 vscode_install "monokai.theme-monokai-pro-vscode"
-
